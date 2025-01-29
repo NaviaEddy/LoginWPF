@@ -5,36 +5,83 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Register_Login.Views"
         mc:Ignorable="d"
-        Title="Login" Height="450" Width="800">
+        Title="Login" WindowState="Maximized" Background="White" Height="184" Width="292">
     <Grid>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200*"/>
-            <ColumnDefinition Width="190*"/>
+            <ColumnDefinition Width="1.2*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
+        <!--1th Column-->
+        <Grid Grid.Column="0" Background="#FFFBFBFB">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.2*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="0.5*"/>
+            </Grid.RowDefinitions>
 
-        <Rectangle HorizontalAlignment="Left" Height="434" VerticalAlignment="Center" Width="442" Fill="#FFFBFBFB" RadiusX="30" RadiusY="50" Margin="-32,0,0,0"/>
+            <!--Logo and name-->
+            <Viewbox Grid.Row="0" Stretch="Uniform" VerticalAlignment="Bottom" Margin="15,0,15,0">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
+                        <Rectangle Height="70" Width="64" VerticalAlignment="Center">
+                            <Rectangle.Fill>
+                                <ImageBrush Stretch="Fill"
+                                    ImageSource="pack://application:,,,/Resources/Images/Security-Logo-by-Friendesign-Acongraphic-17-removebg-preview.png"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
 
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="284" Margin="0,86,0,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="45*"/>
-                <ColumnDefinition Width="26*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Height="159" VerticalAlignment="Center" Margin="0,0,26,0">
-                <Rectangle.Fill>
-                    <ImageBrush Stretch="UniformToFill" ImageSource="/Resources/Images/Security-Logo-by-Friendesign-Acongraphic-17-removebg-preview.png"/>
-                </Rectangle.Fill>
-            </Rectangle>
-            <Label Content="SECUR" HorizontalAlignment="Left" Margin="159,40,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="25" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
-            <Label Content="PROTECT" HorizontalAlignment="Left" Margin="159,71,0,0" VerticalAlignment="Top" FontFamily="Comic Sans MS" FontSize="25" FontWeight="Bold" FontStyle="Italic" Grid.ColumnSpan="2"/>
-            <Label Content="SAFER TECHNOLOGY" HorizontalAlignment="Center" Margin="0,102,0,0" VerticalAlignment="Top" Opacity="0.5" FontFamily="Bahnschrift" RenderTransformOrigin="0.173,-0.08" FontSize="10" Grid.Column="1"/>
+                        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="3">
+                            <TextBlock Text="SECUR" FontFamily="Comic Sans MS" FontSize="10" 
+                               FontWeight="Bold" FontStyle="Italic"/>
+                            <TextBlock Text="PROTECT" FontFamily="Comic Sans MS" FontSize="10" 
+                               FontWeight="Bold" FontStyle="Italic"/>
+                            <TextBlock Text="SAFER TECHNOLOGY" FontFamily="Bahnschrift"
+                               FontSize="4" Opacity="0.6" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5">
+                                <TextBlock.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform Y="-2"/>
+                                    </TransformGroup>
+                                </TextBlock.RenderTransform>
+                            </TextBlock>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Viewbox>
+
+            <!--Description-->
+            <Viewbox Grid.Row="1" Stretch="Uniform" >
+                <StackPanel Margin="20,0,20,0">
+                    <TextBlock Text="Secur Protect is a powerful and user-friendly desktop application designed to provide comprehensive security for your personal data."
+                            FontSize="9" Opacity="0.6" TextWrapping="Wrap" 
+                            Width="346" TextAlignment="Left" FontFamily="Comic Sans MS" FontWeight="Bold" FontStyle="Italic"/>
+                </StackPanel>
+            </Viewbox>
+
+            <!--Footer-->
+            <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                <Viewbox Stretch="Uniform">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5">
+                        <TextBlock Text="National Security 2024" FontSize="6" FontFamily="Segoe UI Variable Text" 
+                            FontWeight="Bold" Opacity="0.5" Margin="40,0,10,0"/>
+                        <TextBlock Text="|" FontSize="6" FontFamily="Segoe UI Variable Text" 
+                            FontWeight="Bold" Opacity="0.5" Margin="10,0,10,0"/>
+                        <TextBlock Text="ISO/IEC 27001" FontSize="6" FontFamily="Segoe UI Variable Text" 
+                            FontWeight="Bold" Opacity="0.5" Margin="10,0,40,0"/>
+                    </StackPanel>
+                </Viewbox>
+            </Grid>
+
         </Grid>
-        <Label Content="Secur Protect is a powerful and user-friendly desktop application designed &#xA;to provide comprehensive security for your personal. " HorizontalAlignment="Center" Margin="0,250,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="47" Width="346" VerticalContentAlignment="Center" FontSize="9" Opacity="0.6" FontFamily="Comic Sans MS" FontWeight="Bold" FontStyle="Italic"/>
-        <Grid HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="272" Margin="63,392,0,0">
-            <Label Content="National Security 2024" HorizontalAlignment="Left" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontWeight="Bold" Opacity="0.5" FontSize="10"/>
-            <Label Content="ISO/IEC 27001" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontWeight="Bold" Opacity="0.5" FontSize="10"/>
-            <Label Content="|" HorizontalAlignment="Left" Margin="141,0,0,0" VerticalAlignment="Center" FontFamily="Segoe UI Variable Text" FontWeight="Bold" Opacity="0.5" FontSize="10"/>
+
+        <!--2th Column-->
+        <Grid>
         </Grid>
 
 
