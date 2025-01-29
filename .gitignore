@@ -1,0 +1,45 @@
+# Build Folders
+bin/
+obj/
+
+# User-Specific Files
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Dependency Caches
+packages/
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+*.nupkg
+.nuget/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Resharper
+_ReSharper*/
+
+# Temporary Files
+*.tmp
+*.cache
+
+# Publish Output
+publish/
+
+# Generated Files
+GeneratedFiles/
+Backup/
+
+# Windows Thumb and System Files
+Thumbs.db
+Desktop.ini
