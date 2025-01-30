@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FontAwesome.WPF" Version="4.7.0.9" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Resources\Images\Security-Logo-by-Friendesign-Acongraphic-17-removebg-preview.png" />
   </ItemGroup>
 
