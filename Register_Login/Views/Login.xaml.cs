@@ -1,7 +1,7 @@
-﻿using FontAwesome.WPF;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -27,6 +27,7 @@ namespace Register_Login.Views
 
         private void TogglePassword_Click(object sender, MouseButtonEventArgs e)
         {
+
             if (PasswordBox.Tag.ToString() == "Hidden")
             {
                 // Cambiar a mostrar el texto
@@ -45,7 +46,10 @@ namespace Register_Login.Views
                 PasswordBox.Visibility = Visibility.Visible;
                 TextBoxPassword.Visibility = Visibility.Collapsed;
                 PasswordBox.Focus();
-                PasswordBox.TabIndex = TextBoxPassword.Text.Length;
+                PasswordBox.GetType()
+                            .GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
+                            ?.Invoke(PasswordBox, new object[] { PasswordBox.Password.Length, 0 });
+
             }
         }
 
@@ -53,8 +57,6 @@ namespace Register_Login.Views
         {
             Placeholder_password.Visibility = string.IsNullOrEmpty(PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
         }
-
-
 
         private void RegisterClick(object sender, MouseButtonEventArgs e)
         {
@@ -69,11 +71,6 @@ namespace Register_Login.Views
         private void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Ingresaras al crud!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void TogglePassword_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-
         }
     }
 }
