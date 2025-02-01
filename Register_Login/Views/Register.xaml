@@ -4,9 +4,215 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Register_Login.Views"
+        xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
         mc:Ignorable="d"
-        Title="Register" Height="450" Width="800">
+        Title="Register" WindowState="Maximized" Height="1310" Width="1529">
+
     <Grid>
-        
+
+        <Grid.Resources>
+            <ResourceDictionary Source="../Resources/Styles/GeneralStyles.xaml"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <!--1th row-->
+        <Grid>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Rectangle Height="120" Width="120" Margin="30,0,0,0"
+                           Style="{StaticResource ImageLogo}">
+                </Rectangle>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <TextBlock Text="SECUR" FontSize="25" Style="{StaticResource Font_logo}"/>
+                    <TextBlock Text="PROTECT" FontSize="25" Style="{StaticResource Font_logo}"/>
+                    <TextBlock Text="SAFER TECHNOLOGY" FontSize="18" Opacity="0.7" Style="{StaticResource Font_label}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+        <!--2th row-->
+        <Grid Grid.Row="1" HorizontalAlignment="Center" Margin="0,0,0,100" >
+
+            <!--Register form-->
+            <Viewbox Stretch="Uniform" MaxHeight="780">
+                <StackPanel Orientation="Vertical">
+                    <!--Title-->
+                    <TextBlock Text="Register" FontSize="25" HorizontalAlignment="Center"
+                               Margin="0,0,0,10"
+                               Style="{StaticResource Font_Title}"/>
+
+                    <!--firstname and lastname-->
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,10">
+                        <!--Firstname-->
+                        <StackPanel Orientation="Vertical" Margin="0,0,15,0">
+                            <TextBlock Text="Firstname: " Style="{StaticResource Font_label}" 
+                                       FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                       FontWeight="Bold"/>
+                            <Grid>
+                                <TextBlock
+                                    Style="{StaticResource InputPlaceHolder}"
+                                    Text="Enter your firstname"
+                                    Visibility="{Binding ElementName=InputFirstName, Path=Text, Converter={StaticResource StringToVisibility}}"
+                                />
+                                <TextBox Name="InputFirstName" Width="150" Height="22"
+                                    Style="{StaticResource Inputtxt}"/>
+                            </Grid>
+                        </StackPanel>
+                        <!--Lastname-->
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Lastname:" Style="{StaticResource Font_label}" 
+                                       FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                       FontWeight="Bold"/>
+                            <Grid>
+                                <TextBlock
+                                    Style="{StaticResource InputPlaceHolder}"
+                                    Text="Enter your lastname"
+                                    Visibility="{Binding ElementName=InputLastName, Path=Text, Converter={StaticResource StringToVisibility}}"
+                                />
+                                <TextBox Name="InputLastName" Width="150" Height="22"
+                                    Style="{StaticResource Inputtxt}"/>
+                            </Grid>
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Address and phone-->
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,0,0,10">
+                        <!--Address-->
+                        <StackPanel Orientation="Vertical" Margin="0,0,15,0">
+                            <TextBlock Text="Address:" Style="{StaticResource Font_label}" 
+                                       FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                       FontWeight="Bold"/>
+                            <Grid>
+                                <TextBlock
+                                    Style="{StaticResource InputPlaceHolder}"
+                                    Text="Enter your address"
+                                    Visibility="{Binding ElementName=InputAddress, Path=Text, Converter={StaticResource StringToVisibility}}"
+                                />
+
+                                <TextBox Name="InputAddress" Width="150" Height="22"
+                                    Style="{StaticResource Inputtxt}"/>
+                            </Grid>
+                        </StackPanel>
+                        <!--Phone-->
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock Text="Phone:" Style="{StaticResource Font_label}" 
+                                       FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                       FontWeight="Bold"/>
+                            <Grid>
+                                <TextBlock
+                                    Style="{StaticResource InputPlaceHolder}"
+                                    Text="Enter your phone"
+                                    Visibility="{Binding ElementName=InputPhone, Path=Text, Converter={StaticResource StringToVisibility}}"
+                                />
+                                <TextBox Name="InputPhone" Width="150" Height="22"
+                                    Style="{StaticResource Inputtxt}"/>    
+                            </Grid>
+                            
+                        </StackPanel>
+                    </StackPanel>
+
+                    <!--Email-->
+                    <StackPanel Orientation="Vertical"
+                                Margin="0,0,0,10">
+                        <TextBlock Text="Email" Style="{StaticResource Font_label}" 
+                                       FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                       FontWeight="Bold"/>
+                        <Grid>
+                            <TextBlock
+                                Style="{StaticResource InputPlaceHolder}"
+                                Text="Enter your email"
+                                Visibility="{Binding ElementName=InputEmail, Path=Text, Converter={StaticResource StringToVisibility}}"
+                            />
+                            <TextBox Name="InputEmail" Height="22" Style="{StaticResource Inputtxt}"/>    
+                        </Grid>
+                        
+                    </StackPanel>
+
+                    <!--Password-->
+                    <StackPanel Orientation="Vertical"
+                                Margin="0,0,0,10">
+                        <TextBlock Text="Password:" Style="{StaticResource Font_label}" 
+                                        FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                        FontWeight="Bold"/>
+                        <Grid>
+                            <TextBlock
+                                x:Name="Placeholder_psw"
+                                Style="{StaticResource InputPlaceHolder}"
+                                Text="******************"
+                            />
+
+                            <TextBox 
+                                Name="TextBoxPassword" Width="315" Height="22" Visibility="Collapsed"
+                                Text="{Binding ElementName=InputPsw, Path=Password}"
+                                Style="{StaticResource Inputtxt}"/>
+                            <fa:IconImage Icon="EyeSlash" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEyeSlashPsw" MouseLeftButtonDown="Psw_Click"/>
+
+                            <PasswordBox Name="InputPsw" Height="22" PasswordChar="*" 
+                                         PasswordChanged="InputPSWChanged" Tag="Hidden"
+                                         Style="{StaticResource Inputpsw}"/>
+                            <fa:IconImage Icon="Eye" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEyePsw" MouseLeftButtonDown="Psw_Click"/>
+                        </Grid>
+                        
+                    </StackPanel>
+
+                    <!--Confirm-->
+                    <StackPanel Orientation="Vertical"
+                                Margin="0,0,0,10">
+                        <TextBlock Text="Confirm password:" Style="{StaticResource Font_label}" 
+                                        FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                        FontWeight="Bold"/>
+                        <Grid>
+                            <TextBlock
+                                x:Name="Placeholder_pswcnf"
+                                Style="{StaticResource InputPlaceHolder}"
+                                Text="******************"                           
+                            />
+                            
+                            <TextBox 
+                                Name="TextBoxPasswordConf" Width="315" Height="22" Visibility="Collapsed"
+                                Text="{Binding ElementName=InputConfPsw, Path=Password}"
+                                Style="{StaticResource Inputtxt}"/>
+                            <fa:IconImage Icon="EyeSlash" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEyeSlashConfPsw" MouseLeftButtonDown="ConfPsw_Click"/>
+                            
+                            <PasswordBox Name="InputConfPsw" Height="22" PasswordChar="*"
+                                         PasswordChanged="InputCnfPSWChanged" Tag="Hidden"
+                                         Style="{StaticResource Inputpsw}"/>
+                            <fa:IconImage Icon="Eye" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEyeConfPsw" MouseLeftButtonDown="ConfPsw_Click"/>
+                        </Grid>
+                        
+                    </StackPanel>
+
+
+                    <!--Buttons-->
+                    <StackPanel Orientation="Vertical">
+                        <Button Content="Create account" Foreground="White" 
+                                Style="{StaticResource ButtonLogin}"
+                                Margin="0,0,0,4" Height="25" Width="130"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Alredy have an account?" FontSize="12" 
+                                       Foreground="#FF555555" Margin="0,0,5,0"
+                                       Style="{StaticResource Font_placeholder}"/>
+                            <TextBlock Text="Sign in" FontSize="12"
+                                        Foreground="#FF0078D7" Cursor="Hand"
+                                       Style="{StaticResource Font_placeholder}"
+                                       MouseLeftButtonDown="SignInClick"/>
+                        </StackPanel>
+                    </StackPanel>
+                </StackPanel>
+            </Viewbox>
+        </Grid>
     </Grid>
 </Window>

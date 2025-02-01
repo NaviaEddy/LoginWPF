@@ -1,0 +1,146 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!--Fonts-->
+    <Style x:Key="Font_logo" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontStyle" Value="Italic"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <Style x:Key="Font_Title" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <Style x:Key="Font_label" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+    </Style>
+    
+    <Style x:Key="Font_footer" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI Variable Text"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    <Style x:Key="Font_placeholder" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+    </Style>
+
+    <!--Background-->
+    <LinearGradientBrush x:Key="PrimaryGradient" StartPoint="0.5,0" EndPoint="0.5,1">
+        <GradientStop Color="#FFF5F9FF" Offset="0"/>
+        <GradientStop Color="DeepSkyBlue" Offset="1"/>
+    </LinearGradientBrush>
+    
+    <Style x:Key="Background-Primary" TargetType="Border">
+        <Setter Property="Background" Value="{StaticResource PrimaryGradient}"/>
+        <Setter Property="CornerRadius" Value="0,20,20,0"/>
+        <Setter Property="Padding" Value="5"/>
+    </Style>
+
+    <!--Logo-->
+    <ImageBrush x:Key="ImageFill" ImageSource="pack://application:,,,/Resources/Images/Security-Logo-by-Friendesign-Acongraphic-17-removebg-preview.png" Stretch="Fill"/>
+    
+    <Style x:Key="ImageLogo" TargetType="Rectangle">
+        <Setter Property="Fill" Value="{StaticResource ImageFill}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <!--InputPlaceholder-->
+    <Style x:Key="InputPlaceHolder" TargetType="TextBlock">
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Opacity" Value="0.6"/>
+        <Setter Property="Margin" Value="8,1,0,0"/>
+        <Setter Property="FontSize" Value="9"/>
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="Panel.ZIndex" Value="1"/>
+    </Style>
+    
+    <!--ButtonLogin-->
+    <Style x:Key="ButtonLogin" TargetType="Button">
+        <Setter Property="FontFamily" Value="Comic Sans MS"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border 
+                            x:Name="BorderLogin"
+                            Background="#FF0078D7"
+                            CornerRadius="5"
+                            BorderThickness="1">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <!--When it enters-->
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="BorderLogin"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#FF2893E0"
+                                            Duration="0:0:0.3"
+                                            />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+
+                            <!--When it leaves-->
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ColorAnimation
+                                            Storyboard.TargetName="BorderLogin"
+                                            Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                            To="#FF0078D7"
+                                            Duration="0:0:0.3"
+                                            />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Input text-->
+    <Style x:Key="Inputtxt" TargetType="TextBox">
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Border Background="White" BorderBrush="#FF888888"
+                        BorderThickness="1" CornerRadius="5">
+                        <ScrollViewer Margin="5,4,0,0" x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--Input Password-->
+    <Style x:Key="Inputpsw" TargetType="PasswordBox">
+        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
+        <Setter Property="FontSize" Value="10"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Border Background="White" BorderBrush="#FF888888"
+                        BorderThickness="1" CornerRadius="5">
+                        <ScrollViewer Margin="5,4,0,0" x:Name="PART_ContentHost"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

@@ -9,24 +9,19 @@
         mc:Ignorable="d"
         Title="Login" WindowState="Maximized" Background="White" Height="363" Width="524">
 
-    <Window.Resources>
-        <helpers:StringToVisibilityConverter x:Key="StringToVisibility"/>
-    </Window.Resources>
-
     <Grid>
 
+        <Grid.Resources>
+            <ResourceDictionary Source="../Resources/Styles/GeneralStyles.xaml"/>
+        </Grid.Resources>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
 
-        <Border Grid.Column="0" CornerRadius="0,20,20,0" Padding="5">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FFF5F9FF"/>
-                    <GradientStop Color="DeepSkyBlue" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
+        <Border Grid.Column="0" Style="{StaticResource Background-Primary}">
+
             <!--1th Column-->
             <Grid>
                 <Grid.RowDefinitions>
@@ -36,7 +31,9 @@
                 </Grid.RowDefinitions>
 
                 <!--Logo and name-->
-                <Viewbox Grid.Row="0" Stretch="Uniform" VerticalAlignment="Bottom" Margin="15,0,15,0">
+                <Viewbox Grid.Row="0" Stretch="Uniform" 
+                         VerticalAlignment="Bottom" Margin="15,0,15,0"
+                          MaxWidth="700">
                     <StackPanel>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -44,20 +41,16 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Rectangle Height="45" Width="40" VerticalAlignment="Center">
-                                <Rectangle.Fill>
-                                    <ImageBrush Stretch="Fill"
-                            ImageSource="pack://application:,,,/Resources/Images/Security-Logo-by-Friendesign-Acongraphic-17-removebg-preview.png"/>
-                                </Rectangle.Fill>
+                            <Rectangle Height="45" Width="40" Style="{StaticResource ImageLogo}">
                             </Rectangle>
 
                             <StackPanel Orientation="Vertical" Grid.Column="1" VerticalAlignment="Center" Margin="3">
-                                <TextBlock Text="SECUR" FontFamily="Comic Sans MS" FontSize="9" 
-                       FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
-                                <TextBlock Text="PROTECT" FontFamily="Comic Sans MS" FontSize="9" 
-                       FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
-                                <TextBlock Text="SAFER TECHNOLOGY" FontFamily="Bahnschrift"
-                       FontSize="3" Opacity="0.6" HorizontalAlignment="Right" Foreground="White"
+                                <TextBlock Text="SECUR" FontSize="9" Style="{StaticResource Font_logo}"
+                                     Foreground="White"/>
+                                <TextBlock Text="PROTECT" FontSize="9" Style="{StaticResource Font_logo}"
+                                     Foreground="White"/>
+                                <TextBlock Text="SAFER TECHNOLOGY" Style="{StaticResource Font_label}"
+                                    FontSize="3" Opacity="0.6" HorizontalAlignment="Right" Foreground="White"
                                            RenderTransformOrigin="0.5,0.5">
                                     <TextBlock.RenderTransform>
                                         <TransformGroup>
@@ -75,8 +68,8 @@
                     <StackPanel Margin="20,0,20,0">
                         <TextBlock Text="Secur Protect is a powerful and user-friendly desktop application designed to provide comprehensive security for your personal data."
                                 FontSize="9" Opacity="0.6" TextWrapping="Wrap" 
-                                Width="346" TextAlignment="Left" FontFamily="Comic Sans MS" 
-                                FontWeight="Bold" FontStyle="Italic" Foreground="White"/>
+                                Width="346" TextAlignment="Left" Style="{StaticResource Font_logo}"
+                                Foreground="White"/>
                     </StackPanel>
                 </Viewbox>
 
@@ -84,12 +77,12 @@
                 <Grid Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <Viewbox Stretch="Uniform">
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,5">
-                            <TextBlock Text="National Security 2024" FontSize="6" FontFamily="Segoe UI Variable Text" 
-                    FontWeight="Bold" Opacity="0.5" Margin="40,0,10,0" Foreground="White"/>
-                            <TextBlock Text="|" FontSize="6" FontFamily="Segoe UI Variable Text" 
-                    FontWeight="Bold" Opacity="0.5" Margin="10,0,10,0" Foreground="White"/>
-                            <TextBlock Text="ISO/IEC 27001" FontSize="6" FontFamily="Segoe UI Variable Text" 
-                    FontWeight="Bold" Opacity="0.5" Margin="10,0,40,0" Foreground="White"/>
+                            <TextBlock Text="National Security 2024" FontSize="6" Style="{StaticResource Font_footer}" 
+                                       Opacity="0.5" Margin="40,0,10,0" Foreground="White"/>
+                            <TextBlock Text="|" FontSize="6" Style="{StaticResource Font_footer}"
+                                       Opacity="0.5" Margin="10,0,10,0" Foreground="White"/>
+                            <TextBlock Text="ISO/IEC 27001" FontSize="6" Style="{StaticResource Font_footer}"
+                                       Opacity="0.5" Margin="10,0,40,0" Foreground="White"/>
                         </StackPanel>
                     </Viewbox>
                 </Grid>
@@ -98,206 +91,84 @@
 
         <!--2th Column-->
         <Grid Grid.Column="1" HorizontalAlignment="Center" 
-              VerticalAlignment="Center" MaxHeight="440">
+              VerticalAlignment="Center">
             <Viewbox Stretch="Uniform" Margin="30" MaxHeight="440">
                 <StackPanel Orientation="Vertical">
                     <!-- Título Login -->
-                    <TextBlock Text="Welcome" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center"  
-                               Foreground="#FF333333" FontFamily="Comic Sans MS" Margin="0,0,0,5"/>
+                    <TextBlock Text="Welcome" FontSize="20" HorizontalAlignment="Center"  
+                               Foreground="#FF333333" Margin="0,0,0,5"
+                               Style="{StaticResource Font_Title}"/>
 
                     <!-- Campo de Email -->
                     <StackPanel Orientation="Vertical" Margin="0,0,0,10">
-                        <TextBlock Text="Email" FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" FontFamily="Bahnschrift" FontWeight="Bold"/>
+                        <TextBlock Text="Email" FontSize="10" Foreground="#FF555555" Margin="0,0,0,5"
+                                   Style="{StaticResource Font_label}" FontWeight="Bold"/>
                         <Grid>
                             <TextBlock
+                                Style="{StaticResource InputPlaceHolder}"
                                 Text="secur@gmail.com"
-                                Foreground="Gray"
-                                FontSize="8"
-                                FontFamily="Segoe UI Semibold"
-                                Margin="9,0,0,0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                IsHitTestVisible="False"
-                                Panel.ZIndex="1"
+                                Margin="9,2,0,0"
                                 Visibility="{Binding ElementName=EmailBox, Path=Text, Converter={StaticResource StringToVisibility}}"
-                                />
+                            />
 
-                            <TextBox Name="EmailBox" Width="200" Height="22">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-                                        <Setter Property="FontSize" Value="10"/>
-                                        <Setter Property="Foreground" Value="Gray"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="TextBox">
-                                                    <Border Background="White" BorderBrush="#FF888888"
-                                                        BorderThickness="1" CornerRadius="5">
-                                                        <ScrollViewer Margin="5,2.5,0,0" x:Name="PART_ContentHost"/>
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
+                            <TextBox Name="EmailBox" Width="200" Height="22"
+                                    Style="{StaticResource Inputtxt}"
+                            />
                         </Grid>
                     </StackPanel>
 
                     <!-- Campo de Password -->
                     <StackPanel Orientation="Vertical" Margin="0,0,0,20">
-                        <TextBlock Text="Password" FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" FontFamily="Bahnschrift" FontWeight="Bold"/>
+                        <TextBlock Text="Password" FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
+                                   Style="{StaticResource Font_label}" FontWeight="Bold"/>
                         <Grid>
                             <TextBlock
                                 x:Name="Placeholder_password"
+                                Style="{StaticResource InputPlaceHolder}"
                                 Text="**********"
-                                Foreground="Gray"
-                                FontSize="8"
-                                FontFamily="Segoe UI Semibold"
                                 Margin="9,2,0,0"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                IsHitTestVisible="False"
-                                Panel.ZIndex="1"
-                                Visibility="Visible"
                                 />
 
                             <TextBox 
                                 Name="TextBoxPassword" Width="200" Height="22" Visibility="Collapsed"
-                                Text="{Binding ElementName=PasswordBox, Path=Password}">
-                                <TextBox.Style>
-                                    <Style TargetType="TextBox">
-                                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-                                        <Setter Property="FontSize" Value="10"/>
-                                        <Setter Property="Foreground" Value="Gray"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="TextBox">
-                                                    <Border Background="White" BorderBrush="#FF888888"
-                                                        BorderThickness="1" CornerRadius="5">
-                                                        <Grid>
-                                                            <ScrollViewer Margin="5,2.5,0,0" x:Name="PART_ContentHost"/>
-                                                            <fa:IconImage Icon="EyeSlash" 
-                                                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
-                                                            x:Name="TogglePassword" MouseLeftButtonDown="TogglePassword_Click"/>
-                                                        </Grid>
-
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </TextBox.Style>
-                            </TextBox>
+                                Text="{Binding ElementName=PasswordBox, Path=Password}"
+                                Style="{StaticResource Inputtxt}"/>
+                            <fa:IconImage Icon="EyeSlash" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEyeSlash" MouseLeftButtonDown="TogglePassword_Click"/>
 
                             <PasswordBox Name="PasswordBox" Width="200" Height="22" Tag="Hidden"
-                                         PasswordChanged="PasswordBox_PasswordChanged" PasswordChar="*" >
-                                <PasswordBox.Style>
-                                    <Style TargetType="PasswordBox">
-                                        <Setter Property="FontFamily" Value="Segoe UI Semibold"/>
-                                        <Setter Property="FontSize" Value="10"/>
-                                        <Setter Property="Foreground" Value="Gray"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="PasswordBox">
-                                                    <Border Background="White" BorderBrush="#FF888888"
-                                                        BorderThickness="1" CornerRadius="5">
-                                                        <Grid>
-                                                            <ScrollViewer Margin="5,3.5,0,0" x:Name="PART_ContentHost"/>
-                                                            <fa:IconImage Icon="Eye" 
-                                                                Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
-                                                                x:Name="TogglePassword" MouseLeftButtonDown="TogglePassword_Click"/>
-                                                        </Grid>
-
-                                                    </Border>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </PasswordBox.Style>
-                            </PasswordBox>
+                                         PasswordChanged="PasswordBox_PasswordChanged" 
+                                         PasswordChar="*" Style="{StaticResource Inputpsw}"/>
+                            <fa:IconImage Icon="Eye" Foreground="Gray"
+                            Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
+                            Name="IconEye" MouseLeftButtonDown="TogglePassword_Click"/>
                         </Grid>
 
                         <TextBlock
                             Text="Forgot password?"
                             HorizontalAlignment="Right"
                             FontSize="10" Foreground="#FF0078D7" Margin="0,5,0,0" 
-                            FontFamily="Segoe UI Semibold" Cursor="Hand"
-                            MouseLeftButtonDown="ForgotPasswordClick"
-                            />
+                            Style="{StaticResource Font_placeholder}" Cursor="Hand"
+                            MouseLeftButtonDown="ForgotPasswordClick"/>
                     </StackPanel>
 
                     <!-- Botón de Login -->
-                    <Button Content="LOG IN" Width="200" Height="25" 
-                            Margin="0,-5,0,10" FontSize="11" FontFamily="Comic Sans MS" FontWeight="SemiBold"
+                    <Button Content="SIGN IN" Width="200" Height="25" 
+                            Margin="0,-5,0,10" FontSize="11" Style="{StaticResource ButtonLogin}"
                             Padding="2" Foreground="White" HorizontalAlignment="Stretch"
-                            Name="ButtonLogin" Click="ButtonLogin_Click"
-                            >
-                        <Button.Style>
-                            <Style TargetType="Button">
-                                <Setter Property="Template">
-                                    <Setter.Value>
-                                        <ControlTemplate TargetType="Button">
-                                            <Border 
-                                                    x:Name="BorderLogin"
-                                                    Background="#FF0078D7"
-                                                    CornerRadius="5"
-                                                    BorderThickness="1">
-                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                            </Border>
-                                            <ControlTemplate.Triggers>
-                                                <Trigger Property="IsMouseOver" Value="True">
-
-                                                    <!--When it enters-->
-                                                    <Trigger.EnterActions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <ColorAnimation
-                                                                    Storyboard.TargetName="BorderLogin"
-                                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                                    To="#FF2893E0"
-                                                                    Duration="0:0:0.3"
-                                                                    />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </Trigger.EnterActions>
-
-                                                    <!--When it leaves-->
-                                                    <Trigger.ExitActions>
-                                                        <BeginStoryboard>
-                                                            <Storyboard>
-                                                                <ColorAnimation
-                                                                    Storyboard.TargetName="BorderLogin"
-                                                                    Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                                    To="#FF0078D7"
-                                                                    Duration="0:0:0.3"
-                                                                    />
-                                                            </Storyboard>
-                                                        </BeginStoryboard>
-                                                    </Trigger.ExitActions>
-
-                                                </Trigger>
-                                            </ControlTemplate.Triggers>
-                                        </ControlTemplate>
-                                    </Setter.Value>
-                                </Setter>
-                            </Style>
-                        </Button.Style>
-                    </Button>
+                            Name="ButtonLogin" Click="ButtonLogin_Click"/>
 
                     <!-- Enlace de Registro -->
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <TextBlock Text="Don't have an account?" FontSize="12" FontFamily="Segoe UI Semibold" Foreground="#FF555555" Margin="0,0,5,0"/>
-                        <TextBlock Text="Register here" FontSize="12" FontFamily="Segoe UI Semibold" 
+                        <TextBlock Text="Don't have an account?" FontSize="12" Style="{StaticResource Font_placeholder}" 
+                                   Foreground="#FF555555" Margin="0,0,5,0"/>
+                        <TextBlock Text="Register here" FontSize="12" Style="{StaticResource Font_placeholder}" 
                                    Foreground="#FF0078D7" Cursor="Hand"
                                    MouseLeftButtonDown="RegisterClick"/>
-
                     </StackPanel>
                 </StackPanel>
             </Viewbox>
-
         </Grid>
-
-
     </Grid>
 </Window>

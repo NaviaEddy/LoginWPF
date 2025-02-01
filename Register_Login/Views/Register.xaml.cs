@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -23,5 +24,68 @@ namespace Register_Login.Views
         {
             InitializeComponent();
         }
-    }
+
+        private void Psw_Click(object sender, RoutedEventArgs e)
+        {
+            TogglePasswordVisibility(InputPsw, TextBoxPassword, IconEyePsw, IconEyeSlashPsw);
+        }
+
+        private void ConfPsw_Click(object sender, RoutedEventArgs e)
+        {
+            TogglePasswordVisibility(InputConfPsw, TextBoxPasswordConf, IconEyeConfPsw, IconEyeSlashConfPsw);
+        }
+
+
+        private void TogglePasswordVisibility(PasswordBox passwordBox, TextBox textBox, UIElement iconVisible, UIElement iconHidden)
+        {
+            if (passwordBox.Tag.ToString() == "Hidden")
+            {
+                // Cambiar a mostrar el texto
+                passwordBox.Tag = "Visible";
+                textBox.Text = passwordBox.Password;
+                passwordBox.Visibility = Visibility.Collapsed;
+                textBox.Visibility = Visibility.Visible;
+                iconVisible.Visibility = Visibility.Hidden;
+                iconHidden.Visibility = Visibility.Visible;
+                textBox.Focus();
+                textBox.CaretIndex = textBox.Text.Length;
+            }
+            else
+            {
+                // Cambiar a ocultar el texto
+                passwordBox.Tag = "Hidden";
+                passwordBox.Password = textBox.Text;
+                passwordBox.Visibility = Visibility.Visible;
+                textBox.Visibility = Visibility.Collapsed;
+                iconVisible.Visibility = Visibility.Visible;
+                iconHidden.Visibility = Visibility.Hidden;
+                passwordBox.Focus();
+                passwordBox.GetType()
+                           .GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
+                           ?.Invoke(passwordBox, new object[] { passwordBox.Password.Length, 0 });
+            }
+        }
+
+        private void InputPSWChanged(object sender, RoutedEventArgs e)
+        {
+            TogglePlaceholderVisibility(InputPsw, Placeholder_psw);
+        }
+
+        private void InputCnfPSWChanged(object sender, RoutedEventArgs e)
+        {
+            TogglePlaceholderVisibility(InputConfPsw, Placeholder_pswcnf);
+        }
+
+        private void TogglePlaceholderVisibility(PasswordBox passwordBox, UIElement placeholder)
+        {
+            placeholder.Visibility = string.IsNullOrEmpty(passwordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
+        }
+
+        private void SignInClick(object sender, MouseButtonEventArgs e) { 
+            Login login = new Login();
+            login.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+    }   
 }

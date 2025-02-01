@@ -35,6 +35,8 @@ namespace Register_Login.Views
                 TextBoxPassword.Text = PasswordBox.Password;
                 PasswordBox.Visibility = Visibility.Collapsed;
                 TextBoxPassword.Visibility = Visibility.Visible;
+                IconEye.Visibility = Visibility.Hidden;
+                IconEyeSlash.Visibility = Visibility.Visible;
                 TextBoxPassword.Focus();
                 TextBoxPassword.CaretIndex = TextBoxPassword.Text.Length;
             }
@@ -45,6 +47,8 @@ namespace Register_Login.Views
                 PasswordBox.Password = TextBoxPassword.Text;
                 PasswordBox.Visibility = Visibility.Visible;
                 TextBoxPassword.Visibility = Visibility.Collapsed;
+                IconEye.Visibility = Visibility.Visible;
+                IconEyeSlash.Visibility = Visibility.Hidden;
                 PasswordBox.Focus();
                 PasswordBox.GetType()
                             .GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
@@ -60,7 +64,9 @@ namespace Register_Login.Views
 
         private void RegisterClick(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("Registro en construccion, esta rico!!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+            Register register = new Register();
+            register.Show();
+            Window.GetWindow(this)?.Close();
         }
 
         private void ForgotPasswordClick(object sender, MouseButtonEventArgs e)
