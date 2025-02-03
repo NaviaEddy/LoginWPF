@@ -49,7 +49,7 @@
                                 Margin="0,0,0,10">
                         <!--Firstname-->
                         <StackPanel Orientation="Vertical" Margin="0,0,15,0">
-                            <TextBlock Text="Firstname: " Style="{StaticResource Font_label}" 
+                            <TextBlock Text="FirstName(s): " Style="{StaticResource Font_label}" 
                                        FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
                                        FontWeight="Bold"/>
                             <Grid>
@@ -64,7 +64,7 @@
                         </StackPanel>
                         <!--Lastname-->
                         <StackPanel Orientation="Vertical">
-                            <TextBlock Text="Lastname:" Style="{StaticResource Font_label}" 
+                            <TextBlock Text="LastName(s):" Style="{StaticResource Font_label}" 
                                        FontSize="10" Foreground="#FF555555" Margin="0,0,0,5" 
                                        FontWeight="Bold"/>
                             <Grid>
@@ -110,9 +110,9 @@
                                     Visibility="{Binding ElementName=InputPhone, Path=Text, Converter={StaticResource StringToVisibility}}"
                                 />
                                 <TextBox Name="InputPhone" Width="150" Height="22"
-                                    Style="{StaticResource Inputtxt}"/>    
+                                    Style="{StaticResource Inputtxt}"/>
                             </Grid>
-                            
+
                         </StackPanel>
                     </StackPanel>
 
@@ -128,9 +128,9 @@
                                 Text="Enter your email"
                                 Visibility="{Binding ElementName=InputEmail, Path=Text, Converter={StaticResource StringToVisibility}}"
                             />
-                            <TextBox Name="InputEmail" Height="22" Style="{StaticResource Inputtxt}"/>    
+                            <TextBox Name="InputEmail" Height="22" Style="{StaticResource Inputtxt}"/>
                         </Grid>
-                        
+
                     </StackPanel>
 
                     <!--Password-->
@@ -156,12 +156,13 @@
 
                             <PasswordBox Name="InputPsw" Height="22" PasswordChar="*" 
                                          PasswordChanged="InputPSWChanged" Tag="Hidden"
-                                         Style="{StaticResource Inputpsw}"/>
+                                         Style="{StaticResource Inputpsw}"
+                                         />
                             <fa:IconImage Icon="Eye" Foreground="Gray"
                             Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
                             Name="IconEyePsw" MouseLeftButtonDown="Psw_Click"/>
                         </Grid>
-                        
+
                     </StackPanel>
 
                     <!--Confirm-->
@@ -176,7 +177,7 @@
                                 Style="{StaticResource InputPlaceHolder}"
                                 Text="******************"                           
                             />
-                            
+
                             <TextBox 
                                 Name="TextBoxPasswordConf" Width="315" Height="22" Visibility="Collapsed"
                                 Text="{Binding ElementName=InputConfPsw, Path=Password}"
@@ -184,23 +185,39 @@
                             <fa:IconImage Icon="EyeSlash" Foreground="Gray"
                             Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
                             Name="IconEyeSlashConfPsw" MouseLeftButtonDown="ConfPsw_Click"/>
-                            
+
                             <PasswordBox Name="InputConfPsw" Height="22" PasswordChar="*"
                                          PasswordChanged="InputCnfPSWChanged" Tag="Hidden"
                                          Style="{StaticResource Inputpsw}"/>
                             <fa:IconImage Icon="Eye" Foreground="Gray"
                             Height="13" HorizontalAlignment="Right" Margin="0,0,8,0"
                             Name="IconEyeConfPsw" MouseLeftButtonDown="ConfPsw_Click"/>
+
+                            <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" 
+                                        Visibility="Collapsed" Name="txtPanelMessage">
+                                <StackPanel.RenderTransform>
+                                    <TransformGroup>
+                                        <TranslateTransform Y="18"/>
+                                    </TransformGroup>
+                                </StackPanel.RenderTransform>
+                                <fa:IconImage Icon="Warning" Foreground="red" Height="8.5"/>
+                                <TextBlock Name="txtErrorMessage" Text="Prueba" Foreground="Red" Opacity="1" 
+                                    FontWeight="Bold"
+                                    Style="{StaticResource InputPlaceHolder}"
+                                    Margin="2,0,0,0"/>
+                            </StackPanel>
+
                         </Grid>
-                        
+
                     </StackPanel>
 
 
                     <!--Buttons-->
-                    <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Vertical" Margin="0,8,0,0">
                         <Button Content="Create account" Foreground="White" 
                                 Style="{StaticResource ButtonLogin}"
-                                Margin="0,0,0,4" Height="25" Width="130"/>
+                                Margin="0,0,0,7" Height="25" Width="130"
+                                Name="ButtonCreateAccount" Click="ButtonCreateAccount_Click"/>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                             <TextBlock Text="Alredy have an account?" FontSize="12" 
                                        Foreground="#FF555555" Margin="0,0,5,0"

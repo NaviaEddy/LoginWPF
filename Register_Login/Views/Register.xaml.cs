@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Register_Login.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -69,11 +70,13 @@ namespace Register_Login.Views
         private void InputPSWChanged(object sender, RoutedEventArgs e)
         {
             TogglePlaceholderVisibility(InputPsw, Placeholder_psw);
+            ValidatePassword();
         }
 
         private void InputCnfPSWChanged(object sender, RoutedEventArgs e)
         {
             TogglePlaceholderVisibility(InputConfPsw, Placeholder_pswcnf);
+            ValidatePassword();
         }
 
         private void TogglePlaceholderVisibility(PasswordBox passwordBox, UIElement placeholder)
@@ -81,10 +84,34 @@ namespace Register_Login.Views
             placeholder.Visibility = string.IsNullOrEmpty(passwordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
         }
 
+        private void ValidatePassword()
+        {
+            if (InputPsw.Password != InputConfPsw.Password)
+            {
+                txtErrorMessage.Text = "Passwords do not match.";
+                txtPanelMessage.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                txtPanelMessage.Visibility = Visibility.Collapsed;
+            }
+        }
+
         private void SignInClick(object sender, MouseButtonEventArgs e) { 
             Login login = new Login();
             login.Show();
             Window.GetWindow(this)?.Close();
+        }
+
+        private void ButtonCreateAccount_Click(object sender, RoutedEventArgs e)
+        {
+            string firstname = InputFirstName.Text;
+            string lastname = InputLastName.Text;
+            string address = InputAddress.Text;
+            string phone = InputPhone.Text;
+            string email = InputEmail.Text;
+            string password = InputPsw.Password;
+            User.CreateUser(firstname, lastname, address, phone, email, password);
         }
 
     }   

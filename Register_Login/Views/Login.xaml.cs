@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Register_Login.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +21,7 @@ namespace Register_Login.Views
     /// </summary>
     public partial class Login : Window
     {
+
         public Login()
         {
             InitializeComponent();
@@ -78,5 +80,6 @@ namespace Register_Login.Views
         {
             MessageBox.Show("Ingresaras al crud!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
     }
 }
