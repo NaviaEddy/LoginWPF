@@ -12,7 +12,6 @@ namespace Register_Login.Models
 {
     internal class User
     {
-
         public static void CreateUser(string firstname, string lastname, string address, string phone, string email, string password)
         {
             try
@@ -90,5 +89,33 @@ namespace Register_Login.Models
                 DatabaseService.close_connection();
             }
         }
+
+        public static bool FindUserEmail(string email)
+        {
+            try
+            {
+                MySqlConnection conn = DatabaseService.GetConnection();
+                DatabaseService.Connection();
+
+                string query = "SELECT COUNT(*) FROM users WHERE email = @email";
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    int count = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    return count > 0; 
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error finding user: {ex.Message}");
+                return false;
+            }
+            finally
+            {
+                DatabaseService.close_connection();
+            }
+        }
+
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Register_Login.Models;
+using Register_Login.Views.Login_Form;
+using Register_Login.Views.Recovery_Password;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,64 +23,20 @@ namespace Register_Login.Views
     /// </summary>
     public partial class Login : Window
     {
+        private static Login? _instance;
 
         public Login()
         {
             InitializeComponent();
+            _instance = this;
+            CurrentView.Content = new Form();
         }
 
-        private void TogglePassword_Click(object sender, MouseButtonEventArgs e)
+        public static void ChangeView(UserControl new_view)
         {
-
-            if (PasswordBox.Tag.ToString() == "Hidden")
-            {
-                // Cambiar a mostrar el texto
-                PasswordBox.Tag = "Visible";
-                TextBoxPassword.Text = PasswordBox.Password;
-                PasswordBox.Visibility = Visibility.Collapsed;
-                TextBoxPassword.Visibility = Visibility.Visible;
-                IconEye.Visibility = Visibility.Hidden;
-                IconEyeSlash.Visibility = Visibility.Visible;
-                TextBoxPassword.Focus();
-                TextBoxPassword.CaretIndex = TextBoxPassword.Text.Length;
+            if (_instance != null) {
+                _instance.CurrentView.Content = new_view;
             }
-            else
-            {
-                // Cambiar a ocultar el texto
-                PasswordBox.Tag = "Hidden";
-                PasswordBox.Password = TextBoxPassword.Text;
-                PasswordBox.Visibility = Visibility.Visible;
-                TextBoxPassword.Visibility = Visibility.Collapsed;
-                IconEye.Visibility = Visibility.Visible;
-                IconEyeSlash.Visibility = Visibility.Hidden;
-                PasswordBox.Focus();
-                PasswordBox.GetType()
-                            .GetMethod("Select", BindingFlags.Instance | BindingFlags.NonPublic)
-                            ?.Invoke(PasswordBox, new object[] { PasswordBox.Password.Length, 0 });
-
-            }
-        }
-
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
-        {
-            Placeholder_password.Visibility = string.IsNullOrEmpty(PasswordBox.Password) ? Visibility.Visible : Visibility.Collapsed;
-        }
-
-        private void RegisterClick(object sender, MouseButtonEventArgs e)
-        {
-            Register register = new Register();
-            register.Show();
-            Window.GetWindow(this)?.Close();
-        }
-
-        private void ForgotPasswordClick(object sender, MouseButtonEventArgs e)
-        {
-            MessageBox.Show("Recuperar contraseña en construccion, RICO!!!!!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Ingresaras al crud!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
     }

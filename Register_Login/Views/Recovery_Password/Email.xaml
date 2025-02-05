@@ -1,0 +1,82 @@
+﻿<UserControl x:Class="Register_Login.Views.Recovery_Password.Email"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Register_Login.Views.Recovery_Password"
+             xmlns:fa="http://schemas.awesome.incremented/wpf/xaml/fontawesome.sharp"
+             mc:Ignorable="d" 
+             HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid>
+
+        <Grid.Resources>
+            <ResourceDictionary Source="../../Resources/Styles/GeneralStyles.xaml"/>
+        </Grid.Resources>
+
+        <Viewbox Stretch="Uniform" Margin="30" MaxHeight="440">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <!--Icon-->
+                <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Ellipse Fill="#FFE2E2E2" Height="30" Width="30">
+                    </Ellipse>
+                    <fa:IconImage Icon="Lock" Height="15" 
+                            Foreground="#FF0078D7">
+                    </fa:IconImage>
+                </Grid>
+                <!--Description-->
+                <TextBlock Text="Reset Password" Style="{StaticResource Font_Title}" 
+                           FontSize="20" HorizontalAlignment="Center" Margin="0,10,0,10">
+                </TextBlock>
+
+                <TextBlock Text="Enter your email address and we will verify if the account exists."
+                           TextWrapping="Wrap" Style="{StaticResource Font_logo}" FontSize="10" 
+                           FontWeight="DemiBold" Opacity="0.6" Width="220" TextAlignment="Center"
+                           Margin="0,0,0,8"/>
+
+                <!--Email-->
+                <StackPanel Orientation="Vertical" Margin="0,0,0,20" HorizontalAlignment="Left">
+                    <TextBlock Text="Email" FontSize="10" Foreground="#FF555555" Margin="0,0,0,5"
+                        Style="{StaticResource Font_label}" FontWeight="Bold"/>
+                    <Grid>
+                        <TextBlock
+                            Style="{StaticResource InputPlaceHolder}"
+                            Text="secur@gmail.com"
+                            Margin="9,2,0,0"
+                            Visibility="{Binding ElementName=EmailBoxRecovery, Path=Text, Converter={StaticResource StringToVisibility}}"
+                        />
+
+                        <TextBox Name="EmailBoxRecovery" Width="220" Height="22"
+                            Style="{StaticResource Inputtxt}"
+                        />
+
+                        <StackPanel Orientation="Horizontal" RenderTransformOrigin="0.5,0.5" 
+                            Visibility="Collapsed" Name="txtPanelMessage">
+                            <StackPanel.RenderTransform>
+                                <TransformGroup>
+                                    <TranslateTransform Y="20"/>
+                                </TransformGroup>
+                            </StackPanel.RenderTransform>
+                            <fa:IconImage Icon="Warning" Foreground="red" Height="8.5"/>
+                            <TextBlock Name="txtErrorMessage" Text="Prueba" Foreground="Red" Opacity="1" 
+                                FontWeight="Bold"
+                                Style="{StaticResource InputPlaceHolder}"
+                                Margin="2,0,0,0"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <!--Button-->
+                <Button Content="Send Recovery Email" Width="220" Height="25" 
+                    Margin="0,0,0,10" FontSize="11" Style="{StaticResource ButtonLogin}"
+                    Padding="2" Foreground="White" HorizontalAlignment="Stretch"
+                    Name="ButtonSendEmail" Click="ButtonSendEmail_Click"/>
+
+                <!--Button/Login-->
+                <TextBlock Text="Return to Login" FontSize="12" Style="{StaticResource Font_placeholder}" 
+                    Foreground="#FF0078D7" Cursor="Hand"
+                    MouseLeftButtonDown="ReturnLoginClick"
+                    HorizontalAlignment="Center"/>
+            </StackPanel>
+        </Viewbox>
+    </Grid>
+</UserControl>
