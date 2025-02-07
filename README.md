@@ -42,10 +42,11 @@ Proyecto/
 La conexión a la base de datos se realiza mediante variables de entorno para mayor seguridad. Asegúrate de configurar las siguientes variables en tu entorno antes de ejecutar la aplicación:
 
 ```sh
-export DB_HOST=tu_servidor
-export DB_USER=tu_usuario
-export DB_PASSWORD=tu_contraseña
-export DB_NAME=db_prueba
+WPF_DB_HOST=tu_servidor
+WPF_DB_USER=tu_usuario
+WPF_DB_PSWD=tu_contraseña
+WPF_DB_PORT=tu puerto (opcional)
+WPF_DB_NAME=db_prueba
 ```
 
 Estas variables **no están incluidas en el repositorio** por razones de seguridad.
@@ -53,17 +54,11 @@ Estas variables **no están incluidas en el repositorio** por razones de segurid
 ## Instalación y Uso
 1. Clonar el repositorio:
    ```sh
-   git clone https://github.com/tu-repositorio.git
+   git clone https://github.com/NaviaEddy/LoginWPF.git
    ```
 2. Configurar las variables de entorno.
 3. Restaurar paquetes de NuGet en el proyecto.
 4. Compilar y ejecutar la aplicación en Visual Studio.
-
-## Contribuciones
-Si deseas contribuir, por favor sigue las siguientes normas:
-- Realiza un **fork** del repositorio.
-- Crea una **rama** con tu nueva funcionalidad.
-- Envía un **pull request** para revisión.
 
 ## Licencia
 Este proyecto está bajo la licencia **MIT**.
