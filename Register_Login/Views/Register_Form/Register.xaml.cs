@@ -1,4 +1,5 @@
 ﻿using Register_Login.Models;
+using Register_Login.Views.Home_View;
 using Register_Login.Views.Login_Form;
 using System;
 using System.Collections.Generic;
@@ -104,7 +105,7 @@ namespace Register_Login.Views.Register_Form
             Window.GetWindow(this)?.Close();
         }
 
-        private void ButtonCreateAccount_Click(object sender, RoutedEventArgs e)
+        private async void ButtonCreateAccount_Click(object sender, RoutedEventArgs e)
         {
             string firstname = InputFirstName.Text;
             string lastname = InputLastName.Text;
@@ -112,7 +113,45 @@ namespace Register_Login.Views.Register_Form
             string phone = InputPhone.Text;
             string email = InputEmail.Text;
             string password = InputPsw.Password;
-            User.CreateUser(firstname, lastname, address, phone, email, password);
+
+            try
+            {
+                string message = User.CreateUser(firstname, lastname, address, phone, email, password);
+
+                switch (message)
+                {
+                    case "M1":
+                        ShowMessage("The email is already registered.", Colors.OrangeRed, FontAwesome.Sharp.IconChar.ExclamationTriangle);
+                        break;
+
+                    case "M2":
+                        ShowMessage("User and credentials successfully created, Logging in...", Colors.Green, FontAwesome.Sharp.IconChar.CheckCircle);
+                        await Task.Delay(2000);
+                        new Home().Show();
+                        Window.GetWindow(this)?.Close();
+                        break;
+
+                    default:
+                        ShowMessage("There was an error, please try again.", Colors.Red, FontAwesome.Sharp.IconChar.TimesCircle);
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"An unexpected error occurred in register: {ex.Message}");
+                ShowMessage("There was an error, please try again.", Colors.Red, FontAwesome.Sharp.IconChar.TimesCircle);
+            }
+
+
+        }
+
+        private void ShowMessage(string text, Color color, FontAwesome.Sharp.IconChar icon)
+        {
+            txtErrorMessage.Text = text;
+            txtErrorMessage.Foreground = new SolidColorBrush(color);
+            IconMessage.Icon = icon;
+            IconMessage.Foreground = new SolidColorBrush(color);
+            txtPanelMessage.Visibility = Visibility;
         }
 
     }   

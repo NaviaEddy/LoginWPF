@@ -200,7 +200,7 @@
                                         <TranslateTransform Y="18"/>
                                     </TransformGroup>
                                 </StackPanel.RenderTransform>
-                                <fa:IconImage Icon="Warning" Foreground="red" Height="8.5"/>
+                                <fa:IconImage Icon="Warning" Foreground="red" Height="8.5" Name="IconMessage"/>
                                 <TextBlock Name="txtErrorMessage" Text="Prueba" Foreground="Red" Opacity="1" 
                                     FontWeight="Bold"
                                     Style="{StaticResource InputPlaceHolder}"

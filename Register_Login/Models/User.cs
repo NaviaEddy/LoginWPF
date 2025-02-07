@@ -12,7 +12,7 @@ namespace Register_Login.Models
 {
     internal class User
     {
-        public static void CreateUser(string firstname, string lastname, string address, string phone, string email, string password)
+        public static string CreateUser(string firstname, string lastname, string address, string phone, string email, string password)
         {
             try
             {
@@ -26,8 +26,7 @@ namespace Register_Login.Models
                     int count = Convert.ToInt32(cmd.ExecuteScalar());
                     if (count > 0)
                     {
-                        MessageBox.Show("The email is alredy registered.");
-                        return;
+                        return "M1";
                     }
                 }
 
@@ -70,25 +69,27 @@ namespace Register_Login.Models
                         }
 
                         transaction.Commit();
-
-                        MessageBox.Show("✅ User and credentials successfully created.", "Information", MessageBoxButton.OK);
+                        return "M2";
                     }
                     catch (Exception ex)
                     {
                         transaction.Rollback();
-                        System.Diagnostics.Debug.WriteLine($"❌ Error al crear el usuario: {ex.Message}");
+                        System.Diagnostics.Debug.WriteLine($"❌ Error creating user in transaction: {ex.Message}");
+                        return "";
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"error creating user: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"❌ Error creating user: {ex.Message}");
+                return "";
             }
             finally
             {
                 DatabaseService.close_connection();
             }
         }
+
 
         public static bool FindUserEmail(string email)
         {
