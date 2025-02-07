@@ -16,7 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Register_Login.Views
+namespace Register_Login.Views.Login_Form
 {
     /// <summary>
     /// Interaction logic for Login.xaml

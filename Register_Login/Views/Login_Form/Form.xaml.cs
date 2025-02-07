@@ -15,6 +15,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Register_Login.Views.Recovery_Password;
+using Register_Login.Views.Register_Form;
+using Register_Login.Views.Home_View;
+using Register_Login.Services;
 
 namespace Register_Login.Views.Login_Form
 {
@@ -67,6 +70,7 @@ namespace Register_Login.Views.Login_Form
 
         private void RegisterClick(object sender, MouseButtonEventArgs e)
         {
+
             Register register = new Register();
             register.Show();
             Window.GetWindow(this)?.Close();
@@ -77,9 +81,27 @@ namespace Register_Login.Views.Login_Form
             Login.ChangeView(new Email()); 
         }
 
-        private void ButtonLogin_Click(object sender, RoutedEventArgs e)
+        private async void ButtonLogin_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Ingresaras al crud!", "Informacion", MessageBoxButton.OK, MessageBoxImage.Information);
+            string email = EmailBox.Text;
+            string password = PasswordBox.Password;
+            if (!Auth.VerifyCredentials(email, password))
+            {
+                txtErrorMessage.Text = "Invalid access. Please try again.";
+                txtPanelMessage.Visibility = Visibility.Visible;
+                return;
+            }
+
+            txtErrorMessage.Text = "Access granted. Logging in...";
+            txtErrorMessage.Foreground = new SolidColorBrush(Colors.Green);
+            IconMessage.Icon = FontAwesome.Sharp.IconChar.CheckCircle;
+            IconMessage.Foreground = new SolidColorBrush(Colors.Green);
+            txtPanelMessage.Visibility = Visibility.Visible;
+
+            await Task.Delay(2000);
+            Home home = new Home();
+            home.Show();
+            Window.GetWindow(this)?.Close();
         }
     }
 }

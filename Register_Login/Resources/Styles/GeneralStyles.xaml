@@ -142,5 +142,60 @@
             </Setter.Value>
         </Setter>
     </Style>
+
+    <!-- DataGrid header -->
+    <Style TargetType="DataGridColumnHeader" x:Key="DataGridHeaderStyle">
+        <Setter Property="Background" Value="#FF0080D6"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Height" Value="45"/>
+        <Setter Property="FontFamily" Value="Bahnschrift"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="DataGridColumnHeader">
+                    <Border Background="{TemplateBinding Background}"
+                        BorderBrush="Transparent"
+                        BorderThickness="0"
+                        CornerRadius="20,20,0,0">
+                        <ContentPresenter VerticalAlignment="Center" Margin="10,0,0,0"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
     
+    <!-- DataGrid cell -->
+    <Style TargetType="DataGridCell" x:Key="DataGridCellStyle">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="DataGridCell" x:Key="CellHorizontal">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,23,0"/>
+    </Style>
+
+    <!-- Alternating rows -->
+    <SolidColorBrush x:Key="RowEvenBrush" Color="#F3F3F3"/>
+    <SolidColorBrush x:Key="RowOddBrush" Color="#FFFFFF"/>
+
+    <Style TargetType="DataGridRow" x:Key="DataGridRowStyle">
+        <Setter Property="FontFamily" Value="Segoe UI Variable Text"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="6,0,0,0"/>
+        <Setter Property="Opacity" Value="0.8"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Background" Value="{StaticResource RowOddBrush}"/>
+
+        <Style.Triggers>
+            <Trigger Property="AlternationIndex" Value="1">
+                <Setter Property="Background" Value="{StaticResource RowEvenBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

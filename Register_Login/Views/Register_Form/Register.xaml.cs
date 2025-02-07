@@ -1,4 +1,5 @@
 ﻿using Register_Login.Models;
+using Register_Login.Views.Login_Form;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Register_Login.Views
+namespace Register_Login.Views.Register_Form
 {
     /// <summary>
     /// Interaction logic for Register.xaml

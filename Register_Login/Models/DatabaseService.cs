@@ -13,7 +13,7 @@ namespace Register_Login.Models
 {
     class DatabaseService
     {
-        private static MySqlConnection _conn;
+        private static MySqlConnection? _conn;
         private static string host = Env.GetString("WPF_DB_HOST");
         private static string port = Env.GetString("WPF_DB_PORT");
         private static string dbName = Env.GetString("WPF_DB_NAME");

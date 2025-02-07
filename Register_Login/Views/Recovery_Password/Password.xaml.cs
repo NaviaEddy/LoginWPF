@@ -110,6 +110,7 @@ namespace Register_Login.Views.Recovery_Password
             {
                 txtErrorMessage.Text = "The password was not updated, please try again.";
                 txtPanelMessage.Visibility = Visibility.Visible;
+                return;
             }
 
             txtErrorMessage.Text = "Password updated correctly, redirecting to login...";

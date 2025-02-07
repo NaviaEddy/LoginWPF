@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:Register_Login"
              xmlns:helpers="clr-namespace:Register_Login.Helpers"
-             StartupUri="/Views/Login.xaml">
+             StartupUri="/Views/Login_Form/Login.xaml">
     <Application.Resources>
         <helpers:StringToVisibilityConverter x:Key="StringToVisibility"/>
     </Application.Resources>
